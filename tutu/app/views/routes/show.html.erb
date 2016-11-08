@@ -4,6 +4,37 @@
   <strong>Name:</strong>
   <%= @route.name %>
 </p>
+<p>
+  Stations on the route:
+</p>
+<p>
+  <% if @route.railway_stations.empty? %>
+    No station
+  <% else %>
+    <ul>
+      <% @route.railway_stations.each do |station| %>
+        <li><%= station.title %></li>
+      <% end %>  
+    </ul>
+  <% end %>
+</p>
+<p> 
+  Trains on the route:
+</p>
+<p>
+  <% if @route.trains.empty? %>
+    No trains on the route
+  <% else %>
+    <ul>
+      <% @route.trains.each do |train| %>
+        <li><%= train.number %></li>
+      <% end %>  
+    </ul>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
+
+<%= render 'layouts/footer' %>
