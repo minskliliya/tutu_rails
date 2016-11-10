@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vagon.number %>
+</p>
+
+<p>
+  <strong>The type of carriage:</strong>
+  <%= @vagon.type_vagon %>
+</p>
+
+<p>
+  <strong>Place down:</strong>
+  <%= @vagon.place_down %>
+</p>
+
+<p>
+  <strong>Place down:</strong>
+  <%= @vagon.place_up %>
+</p>
+
+<%= link_to 'Edit', edit_vagon_path(@vagon) %> |
+<%= link_to 'Back', vagons_path %>

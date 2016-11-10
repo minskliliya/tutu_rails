@@ -14,15 +14,28 @@
 </p>
 
 <p>
-  <strong>On the route:</strong>
-  <% if @train.route.present? %>
-    <%= @train.route.name %>
+  <% if @train.vagons.empty? %>
+    No garriage
   <% else %>
-    Don't have the route
+    <ul>
+      <% @train.vagons.each do |vagon| %>
+          <% if vagon.type_vagon == 'reserved' %>
+            <li>Reserved</li>
+            <li><%= vagon.number %></li>
+            <li><%= vagon.place_up %></li>
+            <li><%= vagon.place_down %></li>
+          <% else %>  
+            <li>Compartmental</li>
+            <li><%= vagon.number %></li>
+            <li><%= vagon.place_up %></li>
+            <li><%= vagon.place_down %></li>
+          <% end %>  
+      <% end %>    
+    </ul>
   <% end %>
 </p>
+
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
 
-<%= render 'layouts/footer' %>
