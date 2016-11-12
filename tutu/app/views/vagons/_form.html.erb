@@ -1,0 +1,32 @@
+<%= form_for(vagon) do |f| %>
+  <%= render 'common/errors', resource: @vagon %>
+  
+  <div class="field">
+    <%= f.label :number , "Number of carriage" %>
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_vagon , "Type of carriage"%>
+    <%= f.text_field :type_vagon %>
+  </div>
+
+   <div class="field">
+    <%= f.label :place_down , "Place down"%>
+    <%= f.text_field :place_down %>
+  </div>
+
+   <div class="field">
+    <%= f.label :place_up , "Place up"%>
+    <%= f.text_field :place_up %>
+  </div>
+
+  <div class="field">
+    <%= f.label :train, "Train for this carriage" %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "#{@vagon.new_record? ? 'Create' : 'Change' }"%>
+  </div>
+<% end %>
