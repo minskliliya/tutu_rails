@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>The type of carriage:</strong>
-  <%= @vagon.type_vagon %>
-</p>
-
-<p>
   <strong>Place down:</strong>
   <%= @vagon.place_down %>
 </p>
@@ -18,6 +13,16 @@
 <p>
   <strong>Place down:</strong>
   <%= @vagon.place_up %>
+</p>
+
+<p>
+  <strong>Place side top:</strong>
+  <%= @vagon.side_top_seats %>
+</p>
+
+<p>
+  <strong>Place side bottom:</strong>
+  <%= @vagon.side_bottom_seats %>
 </p>
 
 <%= link_to 'Edit', edit_vagon_path(@vagon) %> |

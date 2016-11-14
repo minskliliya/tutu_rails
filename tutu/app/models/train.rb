@@ -9,7 +9,7 @@ class Train < ActiveRecord::Base
   def count_vagon(type_vagon)
     count_vagon = 0
     self.vagons.each do |vagon|
-      if vagon.type_vagon == type_vagon
+      if vagon.type == type
         count_vagon +=1
       end
     end
@@ -19,7 +19,7 @@ class Train < ActiveRecord::Base
   def count_place(type_vagon,type_place)
     count_place = 0
     self.vagons.each do |vagon|
-      if vagon.type_vagon == type_vagon
+      if vagon.type == type
         if type_place == "place_up" 
           count_place += vagon.place_up
         else
