@@ -16,13 +16,11 @@
 <p>
   <strong>Carriage</strong>
   <ul>
-    <% @train.vagons.each do |vagon| %>
+    <% @train.order_vagon.each do |vagon| %>
       <li><%= link_to "Vagon #{vagon.number}", vagon %></li>
     <% end %>   
   </ul>  
 </p>
-
-
 
 
 <%= link_to 'Edit', edit_train_path(@train) %> |

@@ -13,17 +13,10 @@ class VagonsController < ApplicationController
   end
 
   def create
-    #@vagon = Vagon.new(vagon_params)
-    if vagon_params[:type] == "economy"
-      @vagon = EconomyVagon.new(vagon_params)
-    elsif vagon_params[:type] == "bottom"
-      @vagon = BottomVagon.new(vagon_params)
-    elsif vagon_params[:type] == "coupe"
-      @vagon = CoupeVagon.new(vagon_params)
-    else 
-      @vagon = SittingVagon.new(vagon_params)
-    end   
-          
+    
+    class_vagon = "#{vagon_params[:type]}" + "Vagon" 
+    @vagon = class_vagon.classify.constantize.new(vagon_params)
+        
     if @vagon.save
       redirect_to @vagon
     else

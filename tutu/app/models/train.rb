@@ -29,4 +29,12 @@ class Train < ActiveRecord::Base
     end
     count_place       
   end  
+
+  def order_vagon
+    if order 
+      vagons.ordered.reverse
+    else
+      vagons.ordered
+    end
+  end  
 end
