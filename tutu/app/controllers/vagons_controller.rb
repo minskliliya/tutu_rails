@@ -1,4 +1,5 @@
 class VagonsController < ApplicationController
+
   before_action :set_vagon, only: [:show, :edit, :update, :destroy]
   def index
     @vagons = Vagon.all
@@ -12,7 +13,10 @@ class VagonsController < ApplicationController
   end
 
   def create
-    @vagon = Vagon.new(vagon_params)
+    
+    class_vagon = "#{vagon_params[:type]}" + "Vagon" 
+    @vagon = class_vagon.classify.constantize.new(vagon_params)
+        
     if @vagon.save
       redirect_to @vagon
     else
@@ -43,6 +47,6 @@ class VagonsController < ApplicationController
   end 
 
   def vagon_params
-    params.require(:vagon).permit(:number, :type_vagon, :place_down, :place_up, :train_id)
+    params.require(:vagon).permit(:number, :type, :place_down, :place_up, :train_id, :side_top_seats, :side_bottom_seats, :seats)
   end 
 end 

@@ -14,24 +14,12 @@
 </p>
 
 <p>
-  <% if @train.vagons.empty? %>
-    No garriage
-  <% else %>
-      Count reserved vagons
-    <%= @train.count_vagon("reserved") %> <br>
-      Place up in reserved carriage
-    <%= @train.count_place("reserved","place_up") %> <br>
-      Place down in reserved carriage
-    <%= @train.count_place("reserved","place_down") %> <br>
-      Count compartmental vagons
-    <%= @train.count_vagon("compartmental") %> <br>  
-      Place up in compartmental carriage
-    <%= @train.count_place("compartmental","place_up") %> <br>
-      Place down in compartmental carriage
-    <%= @train.count_place("compartmental","place_down") %> <br>
-    
-  <% end %> 
-
+  <strong>Carriage</strong>
+  <ul>
+    <% @train.order_vagon.each do |vagon| %>
+      <li><%= link_to "Vagon #{vagon.number}", vagon %></li>
+    <% end %>   
+  </ul>  
 </p>
 
 
