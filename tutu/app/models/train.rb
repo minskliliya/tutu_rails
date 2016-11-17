@@ -7,27 +7,11 @@ class Train < ActiveRecord::Base
   validates :number, presence: true
 
   def count_vagon(type_vagon)
-    count_vagon = 0
-    self.vagons.each do |vagon|
-      if vagon.type == type
-        count_vagon +=1
-      end
-    end
-    count_vagon       
+    Vagon.where(type: type_vagon).count  
   end
 
   def count_place(type_vagon,type_place)
-    count_place = 0
-    self.vagons.each do |vagon|
-      if vagon.type == type
-        if type_place == "place_up" 
-          count_place += vagon.place_up
-        else
-          count_place += vagon.place_down 
-        end      
-      end
-    end
-    count_place       
+    Vagon.where(type: type_vagon).sum(type_place)
   end  
 
   def order_vagon
