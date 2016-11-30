@@ -1,5 +1,5 @@
-<%= form_for(vagon) do |f| %>
-  <%= render 'common/errors', resource: @vagon %>
+<%= form_for [@train, @vagon] do |f| %>
+  <%= render 'common/errors', resource: @train %>
   
   <div class="field">
     <%= f.label :number , "Number of carriage" %>
