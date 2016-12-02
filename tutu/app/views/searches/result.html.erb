@@ -1,0 +1,34 @@
+<h2><%= 'Search result:' %></h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td><%= 'Trains' %></td>
+      <td><%= 'Routes' %></td>
+      <td><%= 'Arrival time' %></td>
+      <td><%= 'Departute time' %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trains.each do |train| %>
+      <tr>
+        <td><%= train.number %></td>
+          <td><%= train.route.name %></td>
+          <td><%= @start_station.arrival_in(train.route) %></td>
+          <td><%= @end_station.departure_in(train.route) %></td>
+          <td>
+            <%= hidden_field_tag :train_id, train.id %>
+            <%= hidden_field_tag :start_station_id, @start_station.id %>
+            <%= hidden_field_tag :end_station_id, @end_station.id %>
+          </td>
+          <td>
+              <%= form_tag new_ticket_path, method: :get do %>
+                <%= hidden_field_tag :train_id, train.id %>
+                <%= hidden_field_tag :start_station_id, @start_station.id %>
+                <%= hidden_field_tag :end_station_id, @end_station.id %>
+                <%= submit_tag "Buy tickets" %>
+              <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

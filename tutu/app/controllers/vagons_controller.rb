@@ -14,7 +14,7 @@ class VagonsController < ApplicationController
 
   def create
     #class_vagon = "#{vagon_params[:type]}" + "Vagon" 
-    #@vagon = @train.class_vagon.classify.constantize.new(vagon_params)
+    #@vagon = class_vagon.classify.constantize.new(vagon_params)
     @vagon = @train.vagons.new(vagon_params)    
     if @vagon.save
       redirect_to @train

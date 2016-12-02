@@ -5,11 +5,15 @@ Rails.application.routes.draw do
 
   resources :routes
   
+  resources :tickets 
+  
   resources :railway_stations do 
     patch :update_position, on: :member
+    patch :arrival_time, on: :member
+    patch :departure_time, on: :member
   end
 
-  resource :search, only: [:new, :show, :edit]
+  resource :search, only: [:show, :create]
      
   get 'welcome/index'
 

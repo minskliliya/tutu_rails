@@ -1,0 +1,15 @@
+<h1>Search</h1>
+
+<div class="row">
+  <%= form_tag search_path, class: 'search_form' do %>
+      <div class="col-md-4">
+        <%= select_tag :start_station, options_from_collection_for_select(@stations, :id, :title), class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= select_tag :end_station, options_from_collection_for_select(@stations, :id, :title), class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= submit_tag "Find", class: 'btn btn-primary find' %>
+      </div>
+  <% end %>
+</div>
