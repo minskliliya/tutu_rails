@@ -14,6 +14,16 @@
 </p>
 
 <p>
+  <% if @train.vagons.empty? %>
+    No garriage
+  <% else %>
+     <% @train.vagons.each do |vagon| %>
+      Count <%= "#{vagon.type}" %> vagons:
+    <%= @train.count_vagon(vagon.type) %> <br>
+     <% end %> 
+  <% end %> 
+
+<p>
   <strong>Carriage</strong>
   <ul>
     <% @train.order_vagon.each do |vagon| %>
@@ -21,6 +31,11 @@
     <% end %>   
   </ul>  
 </p>
+
+<p>
+  <%= link_to "Add vagon", new_train_vagon_path(@train) %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
