@@ -1,0 +1,41 @@
+<p>
+  <strong>Number:</strong>
+  <%= @train.number %>
+</p>
+<p>
+  <strong>On the station:</strong>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Don't have the station
+  <% end %>
+</p>
+
+<p>
+  <% if @train.vagons.empty? %>
+    No garriage
+  <% else %>
+     <% @train.vagons.each do |vagon| %>
+      Count <%= "#{vagon.type}" %> vagons:
+    <%= @train.count_vagon(vagon.type) %> <br>
+     <% end %> 
+  <% end %> 
+
+<p>
+  <strong>Carriage</strong>
+  <ul>
+    <% @train.order_vagon.each do |vagon| %>
+      <li><%= link_to "Vagon #{vagon.number}", vagon %></li>
+    <% end %>   
+  </ul>  
+</p>
+
+<p>
+  <%= link_to "Add vagon", new_admin_train_vagon_path(@train) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Back', trains_path %>
+

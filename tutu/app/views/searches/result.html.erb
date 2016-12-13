@@ -21,7 +21,7 @@
             <%= hidden_field_tag :end_station_id, @end_station.id %>
           </td>
           <td>
-              <%= form_tag new_ticket_path, method: :get do %>
+              <%= form_tag buy_ticket_path(train), method: :post do %>
                 <%= hidden_field_tag :train_id, train.id %>
                 <%= hidden_field_tag :start_station_id, @start_station.id %>
                 <%= hidden_field_tag :end_station_id, @end_station.id %>
