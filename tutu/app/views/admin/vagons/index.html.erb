@@ -1,0 +1,27 @@
+<h1>Vagon</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vagons.each do |vagon| %>
+      <tr>
+        <td><%= vagon.number %></td>
+        <td><%= link_to 'Show', admin_vagon_path(vagon) %></td>
+        <td><%= link_to 'Edit', edit_admin_vagon_path(vagon) %></td>
+        <td><%= link_to 'Destroy', admin_vagon_path(vagon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vagon', new_admin_vagon_path %>
+
+
